@@ -30,21 +30,21 @@ function App() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${unit}&appid=${API}`
 
   const searchLocation = (event) => {
-    if (event.key === 'Enter') {
-      axios.get(url).then((response) => {
+    axios.get(url)
+      .then((response) => {
         setData(response.data)
         console.log(response.data)
       })
-      setLocation('') //remove the query city name after the search
-    }
+    setLocation('') //remove the query city name after the search
   }
+
 
   const handleUnitChange = (event) => {
     setUnit(event.target.value)
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${data.name}&units=${event.target.value}&appid=${API}`
-    ).then((response) => {
-      setData(response.data)
-    })
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${data.name}&units=${event.target.value}&appid=${API}`)
+      .then((response) => {
+        setData(response.data)
+      })
   }
 
   return (
@@ -54,12 +54,16 @@ function App() {
           value={location}
           onChange={event => setLocation(event.target.value)}
           placeholder="Enter City Name"
-          onKeyPress={searchLocation}
+          onKeyPress={(event) => event.key === 'Enter' && searchLocation()}
           type="text" />
         <select name="Unit" value={unit} onChange={(event) => { handleUnitChange(event) }}>
           <option value="metric">Celsius</option>
           <option value="imperial">Fahrenheit</option>
         </select>
+        <button
+          onClick={() => searchLocation()}
+          className="searchButton"
+        >Search</button>
         <h2>{day}, {month} {monthDay} {year}</h2>
       </div>
       <div className="container">

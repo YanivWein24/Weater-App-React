@@ -54,24 +54,23 @@ input {
   padding: 0.8rem 1.5rem;
   font-size: 1.3rem;
   text-align: center;
-  border-radius: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  background: rgba(0, 0, 0, 0.2);
-  color: #f8f8f8;
-  box-shadow: 3px 3px 3px 3px rgb(0, 0, 0);
-  transition: all .2s ease-in-out;
 }
 
-input:hover {
-  transform: scale(1.1);
-
+input:hover,
+select:hover {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 select {
   text-align: center;
-  padding: 0.5rem 0.7rem;
-  margin: 0.8rem;
+  padding: .8rem .5rem;
+  margin: .8rem;
   font-size: 1.3rem;
+}
+
+input,
+select,
+.searchButton {
   border-radius: 25px;
   border: 1px solid rgba(255, 255, 255, 0.8);
   background: rgba(0, 0, 0, 0.2);
@@ -80,14 +79,21 @@ select {
   transition: all .2s ease-in-out;
 }
 
-select:hover {
-  transform: scale(1.1);
+.searchButton {
+  display: block;
+  margin: .3rem auto 0;
+  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.3rem 5.5rem;
+}
+
+.searchButton:hover {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .search h2 {
   padding: 1rem 0 0;
   font-size: 1.3rem;
-  /* font-weight: 600; */
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -145,7 +151,7 @@ img {
   margin: 1rem, auto;
   padding: 1rem;
   border-radius: 50px;
-  background-color: rgba(255, 255, 255, 0.3)
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .copyright {
@@ -205,9 +211,6 @@ img {
 
 @media only screen and (max-width: 420px) {
 
-  /* .app {
-    height: 105vh;
-  } */
 
   .container {
     height: 450px;
@@ -215,6 +218,10 @@ img {
 
   .search input {
     padding: 0.8rem .7rem;
+  }
+
+  select {
+    padding: .5rem .5rem;
   }
 
   .description {
@@ -234,14 +241,3 @@ img {
     border-radius: 60px;
   }
 }
-
-/* @media only screen and (max-width: 700px) {
-  .description {
-    right: -75%;
-    top: 50%;
-  }
-
-  .description p {
-    font-size: 1.6rem;
-  }
-} */
